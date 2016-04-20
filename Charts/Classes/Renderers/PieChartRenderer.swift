@@ -492,7 +492,14 @@ public class PieChartRenderer: ChartDataRendererBase
                 boundingRect = CGRectInset(boundingRect, (boundingRect.width - boundingRect.width * chart.centerTextRadiusPercent) / 2.0, (boundingRect.height - boundingRect.height * chart.centerTextRadiusPercent) / 2.0)
             }
             
-            let textBounds = centerAttributedText.boundingRectWithSize(boundingRect.size, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
+            let textBounds = { () -> NSRect in
+                if #available(OSXApplicationExtension 10.11, *) {
+                    return centerAttributedText.boundingRectWithSize(boundingRect.size, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
+                } else {
+                    // Fallback on earlier versions
+                    return centerAttributedText.boundingRectWithSize(boundingRect.size, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine])
+                }
+            }()
             
             var drawingRect = boundingRect
             drawingRect.origin.x += (boundingRect.size.width - textBounds.size.width) / 2.0
@@ -506,7 +513,12 @@ public class PieChartRenderer: ChartDataRendererBase
             CGContextAddPath(context, clippingPath)
             CGContextClip(context)
             
-            centerAttributedText.drawWithRect(drawingRect, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
+            if #available(OSXApplicationExtension 10.11, *) {
+                centerAttributedText.drawWithRect(drawingRect, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
+            } else {
+                // Fallback on earlier versions
+                centerAttributedText.drawWithRect(drawingRect, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine])
+            }
             
             CGContextRestoreGState(context)
         }

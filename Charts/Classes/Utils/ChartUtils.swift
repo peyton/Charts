@@ -222,7 +222,12 @@ public class ChartUtils
             CGContextTranslateCTM(context, translate.x, translate.y)
             CGContextRotateCTM(context, angleRadians)
             
-            (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            if #available(OSXApplicationExtension 10.11, *) {
+                (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            } else {
+                // Fallback on earlier versions
+                (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes)
+            }
             
             CGContextRestoreGState(context)
         }
@@ -237,7 +242,12 @@ public class ChartUtils
             rect.origin.x += point.x
             rect.origin.y += point.y
             
-            (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            if #available(OSXApplicationExtension 10.11, *) {
+                (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            } else {
+                // Fallback on earlier versions
+                (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes)
+            }
         }
         
         NSUIGraphicsPopContext()
@@ -245,7 +255,14 @@ public class ChartUtils
     
     internal class func drawMultilineText(context context: CGContext, text: String, point: CGPoint, attributes: [String : AnyObject]?, constrainedToSize: CGSize, anchor: CGPoint, angleRadians: CGFloat)
     {
-        let rect = text.boundingRectWithSize(constrainedToSize, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
+        let rect = { () -> NSRect in
+            if #available(OSXApplicationExtension 10.11, *) {
+                return text.boundingRectWithSize(constrainedToSize, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            } else {
+                // Fallback on earlier versions
+                return text.boundingRectWithSize(constrainedToSize, options: .UsesLineFragmentOrigin, attributes: attributes)
+            }
+        }()
         drawMultilineText(context: context, text: text, knownTextSize: rect.size, point: point, attributes: attributes, constrainedToSize: constrainedToSize, anchor: anchor, angleRadians: angleRadians)
     }
     
