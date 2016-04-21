@@ -222,7 +222,7 @@ public class ChartUtils
             CGContextTranslateCTM(context, translate.x, translate.y)
             CGContextRotateCTM(context, angleRadians)
             
-            if #available(OSXApplicationExtension 10.11, *) {
+            if #available(OSX 10.11, *) {
                 (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
             } else {
                 // Fallback on earlier versions
@@ -242,7 +242,7 @@ public class ChartUtils
             rect.origin.x += point.x
             rect.origin.y += point.y
             
-            if #available(OSXApplicationExtension 10.11, *) {
+            if #available(OSX 10.11, *) {
                 (text as NSString).drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
             } else {
                 // Fallback on earlier versions
@@ -256,7 +256,7 @@ public class ChartUtils
     internal class func drawMultilineText(context context: CGContext, text: String, point: CGPoint, attributes: [String : AnyObject]?, constrainedToSize: CGSize, anchor: CGPoint, angleRadians: CGFloat)
     {
         let rect = { () -> NSRect in
-            if #available(OSXApplicationExtension 10.11, *) {
+            if #available(OSX 10.11, *) {
                 return text.boundingRectWithSize(constrainedToSize, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
             } else {
                 // Fallback on earlier versions

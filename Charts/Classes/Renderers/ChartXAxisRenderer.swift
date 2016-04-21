@@ -189,7 +189,7 @@ public class ChartXAxisRenderer: ChartAxisRendererBase
                     if (i == xAxis.values.count - 1 && xAxis.values.count > 1)
                     {
                         let width = { () -> CGFloat in
-                            if #available(OSXApplicationExtension 10.11, *) {
+                            if #available(OSX 10.11, *) {
                                 return labelns.boundingRectWithSize(labelMaxSize, options: .UsesLineFragmentOrigin, attributes: labelAttrs, context: nil).size.width
                             } else {
                                 // Fallback on earlier versions
@@ -205,7 +205,7 @@ public class ChartXAxisRenderer: ChartAxisRendererBase
                     else if (i == 0)
                     { // avoid clipping of the first
                         let width = { () -> CGFloat in
-                            if #available(OSXApplicationExtension 10.11, *) {
+                            if #available(OSX 10.11, *) {
                              return labelns.boundingRectWithSize(labelMaxSize, options: .UsesLineFragmentOrigin, attributes: labelAttrs, context: nil).size.width
                             } else {
                                 // Fallback on earlier versions

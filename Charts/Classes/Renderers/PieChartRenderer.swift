@@ -493,7 +493,7 @@ public class PieChartRenderer: ChartDataRendererBase
             }
             
             let textBounds = { () -> NSRect in
-                if #available(OSXApplicationExtension 10.11, *) {
+                if #available(OSX 10.11, *) {
                     return centerAttributedText.boundingRectWithSize(boundingRect.size, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
                 } else {
                     // Fallback on earlier versions
@@ -513,7 +513,7 @@ public class PieChartRenderer: ChartDataRendererBase
             CGContextAddPath(context, clippingPath)
             CGContextClip(context)
             
-            if #available(OSXApplicationExtension 10.11, *) {
+            if #available(OSX 10.11, *) {
                 centerAttributedText.drawWithRect(drawingRect, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
             } else {
                 // Fallback on earlier versions
