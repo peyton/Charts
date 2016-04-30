@@ -277,7 +277,6 @@
 		65B3F6341C739F7F000983D0 /* ChartPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3F6311C739F7F000983D0 /* ChartPlatform.swift */; };
 		65B3F6851C73BE9E000983D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B3F6841C73BE9E000983D0 /* UIKit.framework */; };
 		65B3F6871C73BEA7000983D0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B3F6861C73BEA7000983D0 /* QuartzCore.framework */; };
-		65B3F6891C73C093000983D0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B3F6881C73C093000983D0 /* Cocoa.framework */; };
 		65F06F8E1BE807040074498D /* IChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F06F8D1BE807040074498D /* IChartDataSet.swift */; };
 		65F06F8F1BE807040074498D /* IChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F06F8D1BE807040074498D /* IChartDataSet.swift */; };
 		65F06F941BE812210074498D /* IBarLineScatterCandleBubbleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F06F931BE812210074498D /* IBarLineScatterCandleBubbleChartDataSet.swift */; };
@@ -300,6 +299,7 @@
 		65F06FAE1BE826010074498D /* IPieChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F06FAC1BE826010074498D /* IPieChartDataSet.swift */; };
 		65F06FB01BE826090074498D /* IRadarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F06FAF1BE826090074498D /* IRadarChartDataSet.swift */; };
 		65F06FB11BE826090074498D /* IRadarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F06FAF1BE826090074498D /* IRadarChartDataSet.swift */; };
+		9C839D1A1CC93FC400FDCDF9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C839D191CC93FC400FDCDF9 /* Cocoa.framework */; };
 		A52C5C3F1BAC5D1100594CDD /* ChartAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A546D1AA5D2DC000F57C2 /* ChartAnimator.swift */; };
 		A52C5C401BAC5D1100594CDD /* ChartAnimationEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B378F161AD500A4009414A4 /* ChartAnimationEasing.swift */; };
 		A52C5C411BAC5D1100594CDD /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A54981AA66B14000F57C2 /* BarChartView.swift */; };
@@ -506,6 +506,8 @@
 		65F06FA91BE818AA0074498D /* IBarChartDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBarChartDataSet.swift; sourceTree = "<group>"; };
 		65F06FAC1BE826010074498D /* IPieChartDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPieChartDataSet.swift; sourceTree = "<group>"; };
 		65F06FAF1BE826090074498D /* IRadarChartDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRadarChartDataSet.swift; sourceTree = "<group>"; };
+		9C839D171CC93EFE00FDCDF9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9C839D191CC93FC400FDCDF9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		A52C5C371BAC5CA400594CDD /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC77DC51C0A991A00C27BCF /* BarChartTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -532,7 +534,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B3F6891C73C093000983D0 /* Cocoa.framework in Frameworks */,
+				9C839D1A1CC93FC400FDCDF9 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +561,8 @@
 		06AEE7C31BDC427F009875AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C839D191CC93FC400FDCDF9 /* Cocoa.framework */,
+				9C839D171CC93EFE00FDCDF9 /* Foundation.framework */,
 				65B3F6881C73C093000983D0 /* Cocoa.framework */,
 				65B3F6861C73BEA7000983D0 /* QuartzCore.framework */,
 				65B3F6841C73BE9E000983D0 /* UIKit.framework */,
@@ -1143,6 +1147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B3F6341C739F7F000983D0 /* ChartPlatform.swift in Sources */,
 				65B3F5C71C7370E5000983D0 /* ChartAnimator.swift in Sources */,
 				65B3F5C81C7370E5000983D0 /* ChartAnimationEasing.swift in Sources */,
 				65B3F5C91C7370E5000983D0 /* BarChartView.swift in Sources */,
@@ -1205,7 +1210,6 @@
 				65B3F5FE1C7370E5000983D0 /* RadarChartDataSet.swift in Sources */,
 				65B3F5FF1C7370E5000983D0 /* ScatterChartData.swift in Sources */,
 				65B3F6001C7370E5000983D0 /* ScatterChartDataSet.swift in Sources */,
-				65B3F6341C739F7F000983D0 /* ChartPlatform.swift in Sources */,
 				65B3F6011C7370E5000983D0 /* ChartDataApproximatorFilter.swift in Sources */,
 				65B3F6021C7370E5000983D0 /* ChartDataBaseFilter.swift in Sources */,
 				65B3F6031C7370E5000983D0 /* ChartDefaultFillFormatter.swift in Sources */,
@@ -1464,6 +1468,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1504,6 +1509,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1570,7 +1576,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dcg.ChartsOSX;
 				PRODUCT_NAME = Charts;
-				SDKROOT = macosx10.11;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1592,7 +1598,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dcg.ChartsOSX;
 				PRODUCT_NAME = Charts;
-				SDKROOT = macosx10.11;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

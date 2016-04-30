@@ -495,7 +495,41 @@ types are aliased to either their UI* implementation (on iOS) or their NS* imple
             }
 		}
 	}
-
+    
+    /** Stump for class introduced in El Capitan */
+    @available(OSX, introduced=10.10, obsoleted=10.11)
+    class NSStringDrawingContext : AppKit.NSStringDrawingContext { }
+    
+    /** Attributed string drawing wrappers for methods introduced in El Capitan */
+    @available(OSX, introduced=10.10, obsoleted=10.11)
+    extension NSAttributedString
+    {
+        @objc(yosemite_boundingRectWithSize:options:context:)
+        func boundingRectWithSize(size: NSSize, options: NSStringDrawingOptions, context: NSStringDrawingContext?) -> NSRect {
+            return self.boundingRectWithSize(size, options: options)
+        }
+        
+        @objc(yosemite_drawWithRect:options:context:)
+        func drawWithRect(rect: NSRect, options: NSStringDrawingOptions, context: NSStringDrawingContext?) {
+            self.drawWithRect(rect, options: options)
+        }
+    }
+    
+    /** String drawing wrappers for methods introduced in El Capitan */
+    @available(OSX, introduced=10.10, obsoleted=10.11)
+    extension NSString
+    {
+        @objc(yosemite_boundingRectWithSize:options:attributes:context:)
+        func boundingRectWithSize(size: NSSize, options: NSStringDrawingOptions, attributes: [String : AnyObject]?, context: NSStringDrawingContext?) -> NSRect {
+            return self.boundingRectWithSize(size, options: options, attributes: attributes)
+        }
+        
+        @objc(yosemite_drawWithRect:options:attributes:context:)
+        func drawWithRect(rect: NSRect, options: NSStringDrawingOptions, attributes: [String : AnyObject]?, context: NSStringDrawingContext?) {
+            return self.drawWithRect(rect, options:options, attributes: attributes)
+        }
+    }
+    
 	func NSUIGraphicsGetCurrentContext() -> CGContextRef?
     {
 		return NSGraphicsContext.currentContext()?.CGContext
